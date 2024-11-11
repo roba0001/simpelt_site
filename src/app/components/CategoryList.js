@@ -9,7 +9,7 @@ export default async function Page() {
     <div>
       <form>
         <label for="categories">Categories: </label>
-        <select name="categories" id="categories">
+        <select key={data.id} name="categories" id="categories">
           {data.map((category) => (
             <option value={category.name}>{category.name}</option>
           ))}
