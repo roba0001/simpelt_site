@@ -1,17 +1,21 @@
-"use client";
-import React, { useState } from "react";
+// "use client";
+// import React, { useState } from "react";
 
 export default async function Page() {
   let response = await fetch("https://dummyjson.com/products/categories");
   let data = await response.json();
 
+  //   indsæt use state her
+
   return (
     <div>
       <form>
         <label for="categories">Categories: </label>
-        <select key={data.id} name="categories" id="categories">
+        <select name="categories" id="categories">
           {data.map((category) => (
-            <option value={category.name}>{category.name}</option>
+            <option key={data.id} value={category.name}>
+              {category.name}
+            </option>
           ))}
         </select>
       </form>

@@ -30,6 +30,21 @@ export default async function ProductPage({ params }) {
           <p>Description: {product.description}</p>
         </div>
       </div>
+
+      <h1>Reviews:</h1>
+      <div className="flex gap-5 justify-between">
+        {product.reviews.map((review) => (
+          <div>
+            {/* spørg omkring stjerner */}
+            <h2>
+              {review.rating} - {review.comment}
+            </h2>
+
+            <h2>{review.reviewerEmail}</h2>
+            <h2>{review.reviewerName}</h2>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

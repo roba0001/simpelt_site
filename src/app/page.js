@@ -15,9 +15,9 @@ export default function Home() {
             alt="Forside billede"
             src="/images/forside_img.jpg"
           ></Image>
-          <Link href={"pages/products"}>See products!</Link>
         </div>
         <h1>Simple Store</h1>
+        <Link href={"pages/products"}>See products!</Link>
       </main>
     </body>
   );
