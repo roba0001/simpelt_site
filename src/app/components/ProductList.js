@@ -24,6 +24,8 @@ export default function ProductList() {
   }
 
   function addToBasket(product) {
+    // tilføj antal prop
+    // hvis den findes, tilføj antal
     setBasketProducts(basketProducts.concat(product));
   }
 
