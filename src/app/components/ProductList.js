@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { BsFillBasket3Fill } from "react-icons/bs";
 
 export default async function Page() {
   let response = await fetch("https://dummyjson.com/products");
@@ -14,14 +15,14 @@ export default async function Page() {
               <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
             </Link>
 
-            <div className="grid grid-cols-2">
+            <div className="flex justify-around">
               <div>
                 <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
-                <h1>Pris</h1>
+                <h1>Price: {product.price}</h1>
               </div>
 
               <Link href={`#`}>
-                <button>Put in basket</button>
+                <BsFillBasket3Fill size={30} />
               </Link>
             </div>
           </div>

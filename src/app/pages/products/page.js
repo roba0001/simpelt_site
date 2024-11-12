@@ -1,6 +1,6 @@
 import Meny from "@/app/components/Meny";
-import ProductList from "@/app/components/Productlist";
 import CategoryList from "@/app/components/CategoryList";
+import ProductList from "@/app/components/ProductList";
 
 export default function ProductsPage() {
   return (
