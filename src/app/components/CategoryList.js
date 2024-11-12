@@ -1,9 +1,4 @@
-"use client";
-import React, { useState } from "react";
-
 export default async function Page() {
-  const [chosenCategory, setChosenCategory] = useState(0);
-
   // let response =  if (chosenCategory===0){
   //   await fetch ("https://dummyjson.com/products/categories")
   // } else {
