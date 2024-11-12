@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsFillBasket3Fill } from "react-icons/bs";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 export default function ProductList() {
   const [products, setProducts] = useState(undefined);
@@ -24,7 +25,10 @@ export default function ProductList() {
 
   function addToBasket(product) {
     setBasketProducts(basketProducts.concat(product));
-    console.log(basketProducts);
+  }
+
+  function removeFromBasket(id) {
+    setBasketProducts(basketProducts.filter((product) => product.id !== id));
   }
 
   return (
@@ -52,9 +56,14 @@ export default function ProductList() {
       <section>
         <h1 className="bg-lime-500">Basket</h1>
         <ul>
-          {/* {basketProducts.map((basketProduct) => (
-            <li key={basketProduct.id}>{basketProduct.title}</li>
-          ))} */}
+          {basketProducts.map((basketProduct) => (
+            <div className="flex">
+              <li key={basketProduct.id}>{basketProduct.title}</li>
+              <button onClick={() => removeFromBasket(basketProduct)}>
+                <FaRegTrashCan />
+              </button>
+            </div>
+          ))}
         </ul>
       </section>
     </div>
