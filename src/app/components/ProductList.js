@@ -4,11 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsFillBasket3Fill } from "react-icons/bs";
-let basketArray = [];
 
 export default function ProductList() {
   const [products, setProducts] = useState(undefined);
-  const [basketProducts, setBasketProducts] = useState(undefined);
+  const [basketProducts, setBasketProducts] = useState([]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -24,8 +23,8 @@ export default function ProductList() {
   }
 
   function addToBasket(product) {
-    basketArray.push(product);
-    console.log(basketArray);
+    setBasketProducts(basketProducts.concat(product));
+    console.log(basketProducts);
   }
 
   return (
@@ -53,9 +52,9 @@ export default function ProductList() {
       <section>
         <h1 className="bg-lime-500">Basket</h1>
         <ul>
-          {basketArray.map((basketProduct) => (
+          {/* {basketProducts.map((basketProduct) => (
             <li key={basketProduct.id}>{basketProduct.title}</li>
-          ))}
+          ))} */}
         </ul>
       </section>
     </div>
