@@ -17,7 +17,7 @@ export default async function Page() {
     <div>
       <form>
         <label htmlFor="categories">Categories: </label>
-        <select name="categories" id="categories" onChange={()=>}>
+        <select name="categories" id="categories">
           {data.map((category) => (
             <option key={category.name} value={category.name}>
               {category.name}
