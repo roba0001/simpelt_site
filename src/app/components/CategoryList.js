@@ -1,9 +1,4 @@
-"use client";
-import React, { useState } from "react";
-
 export default async function Page() {
-  const [chosenCategory, setChosenCategory] = useState(0);
-
   // let response =  if (chosenCategory===0){
   //   await fetch ("https://dummyjson.com/products/categories")
   // } else {
@@ -17,7 +12,7 @@ export default async function Page() {
     <div>
       <form>
         <label htmlFor="categories">Categories: </label>
-        <select name="categories" id="categories" onChange={()=>}>
+        <select name="categories" id="categories">
           {data.map((category) => (
             <option key={category.name} value={category.name}>
               {category.name}
