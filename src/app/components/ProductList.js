@@ -7,18 +7,25 @@ export default async function Page() {
   let data = await response.json();
   let basketArray = [];
   return (
-    <div className="flex justify-between">
-      <section className="grid grid-cols-3 ">
+    <div id="vv" className="flex justify-between">
+      <div id="v" className="grid grid-cols-3 ">
         {data.products.map((product) => (
           <div>
             <Link href={`/pages/products/${product.id}`}>
               {" "}
-              <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
+              <Image
+                src={product.thumbnail}
+                width={250}
+                height={250}
+                alt="Product thumbnail"
+              />
             </Link>
 
             <div className="flex justify-around">
               <div>
-                <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
+                <Link href={`/pages/products/${product.id}`}>
+                  {product.title}
+                </Link>
                 <h1>Price: {product.price}</h1>
               </div>
 
@@ -28,7 +35,7 @@ export default async function Page() {
             </div>
           </div>
         ))}
-      </section>
+      </div>
       <section>
         <h1 className="bg-lime-500">Basket</h1>
       </section>
