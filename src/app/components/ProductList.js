@@ -6,18 +6,34 @@ import Image from "next/image";
 import { BsFillBasket3Fill } from "react-icons/bs";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-export default function ProductList() {
+export default function ProductList({ selectedCategory }) {
   const [products, setProducts] = useState(undefined);
   const [basketProducts, setBasketProducts] = useState([]);
 
   useEffect(() => {
     async function fetchProducts() {
-      let response = await fetch("https://dummyjson.com/products");
-      let data = await response.json();
-      setProducts(data);
+      try {
+        const url = selectedCategory
+          ? `https://dummyjson.com/products/category/${selectedCategory}`
+          : `https://dummyjson.com/products`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log("Products data:", data);
+
+        if (data && Array.isArray(data.products)) {
+          setProducts(data.products);
+        } else {
+          setProducts([]);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setProducts([]);
+      }
     }
+
     fetchProducts();
-  }, []);
+  }, [selectedCategory]);
 
   if (!products) {
     return <div>Loading...</div>;
@@ -36,7 +52,7 @@ export default function ProductList() {
   return (
     <div className="flex justify-between">
       <div className="grid grid-cols-3 ">
-        {products.products.map((product) => (
+        {products.map((product) => (
           <div key={product.id}>
             <Link href={`/pages/products/${product.id}`}>
               {" "}

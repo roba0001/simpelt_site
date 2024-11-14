@@ -7,7 +7,6 @@ export default function ProductsPage() {
     <div>
       <Meny />
       <CategoryList />
-      <ProductList />
     </div>
   );
 }
