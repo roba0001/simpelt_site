@@ -11,16 +11,9 @@ export default function CategoryList() {
 
   useEffect(() => {
     async function fetchCategories() {
-      try {
-        const response = await fetch(
-          "https://dummyjson.com/products/categories"
-        );
-        const data = await response.json();
-        console.log("Categories data:", data);
-        setCategories(data);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
+      const response = await fetch("https://dummyjson.com/products/categories");
+      const data = await response.json();
+      setCategories(data);
     }
     fetchCategories();
   }, []);
@@ -65,15 +58,11 @@ export default function CategoryList() {
           value={selectedCategory}
         >
           <option value="">Select a category</option>
-          {categories.length > 0 ? (
-            categories.map((category) => (
-              <option key={category.slug} value={category.slug}>
-                {category.name}
-              </option>
-            ))
-          ) : (
-            <option>No categories available</option>
-          )}
+          {categories.map((category) => (
+            <option key={category.slug} value={category.slug}>
+              {category.name}
+            </option>
+          ))}
         </select>
       </form>
       <div className="product-list grid grid-cols-3 gap-4 mt-4">
