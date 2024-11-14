@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ProductList from "@/app/components/ProductList";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -65,13 +66,11 @@ export default function CategoryList() {
           ))}
         </select>
       </form>
-      <div className="product-list grid grid-cols-3 gap-4 mt-4">
+      {/* <ProductList selectedCategory={selectedCategory} /> */}
+      {/* <div className="product-list grid grid-cols-3 gap-4 mt-4">
         {products.length > 0 &&
           products.map((product) => (
-            <div
-              key={product.id}
-              className="product-item border p-4 rounded-md"
-            >
+            <div key={product.id} className="product-item border p-4 rounded-md">
               <Link href={`/pages/products/${product.id}`}>
                 <Image
                   src={product.thumbnail}
@@ -85,7 +84,7 @@ export default function CategoryList() {
               <p className="text-center">Price: ${product.price}</p>
             </div>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 }

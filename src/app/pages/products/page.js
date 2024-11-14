@@ -6,8 +6,6 @@ export default function ProductsPage() {
   return (
     <div>
       <Meny />
-      <CategoryList />
-      <h1>Products</h1>
       <ProductList />
     </div>
   );
