@@ -9,6 +9,9 @@ import { FaRegTrashCan } from "react-icons/fa6";
 export default function ProductList({ selectedCategory }) {
   const [products, setProducts] = useState(undefined);
   const [basketProducts, setBasketProducts] = useState([]);
+  const [productQuantity, setProductQuantity] = useState(0);
+
+  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -42,7 +45,31 @@ export default function ProductList({ selectedCategory }) {
   function addToBasket(product) {
     // tilføj antal prop
     // hvis den findes, tilføj antal
+    const addedProduct = {
+      title: product.title,
+      price: product.price,
+      id: product.id,
+      quantity: 0,
+    };
     setBasketProducts(basketProducts.concat(product));
+    setProductQuantity(productQuantity + 1);
+
+    if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
+      // her skal den tilføje tal istedet for produktet igen
+      addedProduct.quantity++;
+      console.log("addedProductQuantity: ", addedProduct.quantity);
+
+      console.log("basket includes this product");
+    }
+
+    // if (basketProducts.id)
+    // if (newTask.id === product && productQuantity === 1) {
+    // } else {
+    //   console.log("flere end 1");
+    // }
+
+    // console.log("basketproducts: ", basketProducts);
+    // console.log(product.id);
   }
 
   function removeFromBasket(id) {
@@ -71,18 +98,27 @@ export default function ProductList({ selectedCategory }) {
           </div>
         ))}
       </div>
+
       <section>
-        <h1 className="bg-lime-500">Basket</h1>
+        <div className=" bg-blue-200 flex justify-between">
+          <h1>Basket</h1>
+          <h1>{productQuantity}</h1>
+        </div>
         <ul>
           {basketProducts.map((basketProduct) => (
-            <div className="flex">
-              <li key={basketProduct.id}>{basketProduct.title}</li>
+            <div antal={basketProduct.id} className="flex justify-between">
+              <li>
+                <div key={basketProduct.id}>{basketProduct.title}</div>
+              </li>
               <button onClick={() => removeFromBasket(basketProduct)}>
                 <FaRegTrashCan />
               </button>
             </div>
           ))}
         </ul>
+        <button>
+          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
+        </button>
       </section>
     </div>
   );
