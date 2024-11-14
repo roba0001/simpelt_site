@@ -19,7 +19,7 @@ export default async function ProductPage({ params }) {
         <div>
           <Image src={product.thumbnail} width={500} height={500} alt="Product thumbnail" />
           <div className="flex justify-between">
-            {product.images.map((image) => (
+            {product.images?.map((image) => (
               <Image src={image} width={75} height={75} alt="Product image" />
             ))}
           </div>
@@ -33,7 +33,7 @@ export default async function ProductPage({ params }) {
 
       <h1>Reviews:</h1>
       <div className="flex gap-5 justify-between">
-        {product.reviews.map((review) => (
+        {product.reviews?.map((review) => (
           <div>
             {/* spørg omkring stjerner */}
             <h2>
