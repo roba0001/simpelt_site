@@ -50,8 +50,8 @@ export default function ProductList({ selectedCategory }) {
   }
 
   return (
-    <div className="flex justify-between bg-[rgb(255,250,239)]">
-      <div className="product-list grid grid-cols-3 gap-4 mt-4 ">
+    <div className="flex justify-between  mt-4">
+      <div className="grid grid-cols-3 bg-[rgb(255,250,239)]">
         {products.map((product) => (
           <div key={product.id}>
             <Link href={`/pages/products/${product.id}`}>
