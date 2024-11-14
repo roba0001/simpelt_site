@@ -50,18 +50,25 @@ export default function ProductList({ selectedCategory }) {
   }
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between bg-[rgb(255,250,239)]">
       <div className="grid grid-cols-3 ">
         {products.map((product) => (
           <div key={product.id}>
             <Link href={`/pages/products/${product.id}`}>
               {" "}
-              <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
+              <Image
+                src={product.thumbnail}
+                width={250}
+                height={250}
+                alt="Product thumbnail"
+              />
             </Link>
 
-            <div className="flex justify-around">
+            <div className="flex justify-around  ">
               <div>
-                <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
+                <Link href={`/pages/products/${product.id}`}>
+                  {product.title}
+                </Link>
                 <h1>Price: {product.price}</h1>
               </div>
               <button onClick={() => addToBasket(product)}>
