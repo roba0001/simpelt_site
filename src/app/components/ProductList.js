@@ -71,36 +71,46 @@ export default function ProductList({ selectedCategory }) {
   }
 
   return (
-    <div className="flex justify-between  mt-4">
-      <div className="grid grid-cols-3 ">
+    <div className="grid grid-cols-[6fr_2fr] mb-10">
+      <div className=" grid grid-cols-3 ">
         {products.map((product) => (
-          <div className="bg-red-500 m-3 rounded-2xl" key={product.id}>
-            <Link href={`/pages/products/${product.id}`}>
+          <div
+            className="max-w-auto bg-card m-4 p-5 rounded-2xl flex flex-col justify-between"
+            key={product.id}
+          >
+            <Link className="mb-3" href={`/pages/products/${product.id}`}>
               {" "}
-              <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
+              <Image src={product.thumbnail} width={200} height={200} alt="Product thumbnail" />
             </Link>
 
-            <div className="flex justify-around  ">
-              <div>
-                <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
+            <div className="flex flex-col justify-end gap-7">
+              <div className="flex flex-col justify-end gap-1">
+                <Link href={`/pages/products/${product.id}`}>
+                  <span className="font-bold	">{product.title}</span>
+                </Link>
                 <h1>Price: {product.price}</h1>
               </div>
-              <button onClick={() => addToBasket(product)}>
-                <BsFillBasket3Fill size={25} />
+              <button
+                className="bg-accent rounded-2xl p-2 hover:bg-accenthover"
+                onClick={() => addToBasket(product)}
+              >
+                Add to basket
               </button>
             </div>
           </div>
         ))}
       </div>
 
-      <section>
-        <div className=" bg-blue-200 flex justify-between">
-          <h1>Basket</h1>
-          <h1>{productQuantity}</h1>
+      <section className="border-4 border-card p-5 m-4 rounded-2xl h-min ">
+        <div className="  rounded-2xl flex justify-between">
+          <h1 className="font-bold	">Basket</h1>
+          <div className="rounded-full w-10 h-10 bg-red-500 flex align-center">
+            <h1>{productQuantity}</h1>
+          </div>
         </div>
         <ul>
           {basketProducts.map((basketProduct) => (
-            <div antal={basketProduct.id} className="flex justify-between">
+            <div antal={basketProduct.id} className="flex justify-between my-4">
               <li>
                 <div key={basketProduct.id}>{basketProduct.title}</div>
               </li>
@@ -110,7 +120,7 @@ export default function ProductList({ selectedCategory }) {
             </div>
           ))}
         </ul>
-        <button>
+        <button className="bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
           <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
         </button>
       </section>

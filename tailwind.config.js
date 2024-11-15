@@ -11,6 +11,7 @@ module.exports = {
         background: "var(--background)",
         card: "var(--card)",
         accent: "var(--accent)",
+        accenthover: "var(--accent-hover)",
       },
     },
   },

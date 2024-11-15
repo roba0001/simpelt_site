@@ -5,7 +5,8 @@
 :root {
   --background: rgb(255, 250, 239);
   --card: #e8e2c5;
-  --accent: #6170fd;
+  --accent: #bcc2ff;
+  --accent-hover: #9da6ff;
 }
 
 /* @media (prefers-color-scheme: dark) {
