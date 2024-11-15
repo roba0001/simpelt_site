@@ -54,12 +54,12 @@ export default function ProductList({ selectedCategory }) {
     setBasketProducts(basketProducts.concat(product));
     setProductQuantity(productQuantity + 1);
 
+    // hvis produktet allerede findes
     if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
-      // her skal den tilføje tal istedet for produktet igen
+      console.log("basket includes this product");
+
       addedProduct.quantity++;
       console.log("addedProduct.Quantity: ", addedProduct.quantity);
-
-      console.log("basket includes this product");
     }
 
     // if (basketProducts.id)
@@ -106,7 +106,7 @@ export default function ProductList({ selectedCategory }) {
         </div>
         <ul>
           {basketProducts.map((basketProduct) => (
-            <div antal={basketProduct.id} className="flex justify-between">
+            <div className="flex justify-between">
               <li>
                 <div key={basketProduct.id}>{basketProduct.title}</div>
               </li>
