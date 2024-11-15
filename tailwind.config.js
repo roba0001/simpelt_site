@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
+        card: "var(--card)",
+        accent: "var(--accent)",
       },
     },
   },

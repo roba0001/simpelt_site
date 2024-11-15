@@ -11,9 +11,7 @@ export default function ProductList({ selectedCategory }) {
   const [basketProducts, setBasketProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  const selectedProducts = basketProducts
-    .map((basketProduct) => `${basketProduct.id}`)
-    .join(",");
+  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -55,9 +53,7 @@ export default function ProductList({ selectedCategory }) {
     };
     setProductQuantity(productQuantity + 1);
 
-    if (
-      basketProducts.some((basketProduct) => basketProduct.id === product.id)
-    ) {
+    if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
       // her skal den tilføje tal istedet for produktet igen
       addedProduct.quantity++;
       console.log("addedProductQuantity: ", addedProduct.quantity);
@@ -78,22 +74,15 @@ export default function ProductList({ selectedCategory }) {
     <div className="flex justify-between  mt-4">
       <div className="grid grid-cols-3 ">
         {products.map((product) => (
-          <div key={product.id}>
+          <div className="bg-red-500 m-3 rounded-2xl" key={product.id}>
             <Link href={`/pages/products/${product.id}`}>
               {" "}
-              <Image
-                src={product.thumbnail}
-                width={250}
-                height={250}
-                alt="Product thumbnail"
-              />
+              <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
             </Link>
 
             <div className="flex justify-around  ">
               <div>
-                <Link href={`/pages/products/${product.id}`}>
-                  {product.title}
-                </Link>
+                <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
                 <h1>Price: {product.price}</h1>
               </div>
               <button onClick={() => addToBasket(product)}>
@@ -122,9 +111,7 @@ export default function ProductList({ selectedCategory }) {
           ))}
         </ul>
         <button>
-          <Link href={`/pages/payment?items=${selectedProducts}`}>
-            Pay now!
-          </Link>
+          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
         </button>
       </section>
     </div>
