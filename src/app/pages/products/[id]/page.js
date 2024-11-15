@@ -10,7 +10,7 @@ export default async function ProductPage({ params }) {
   let product = await response.json();
 
   return (
-    <div className="bg-[rgb(232, 226, 197] p-6">
+    <div className=" p-6">
       <Meny />
       <Link className="flex gap-3 items-center mb-4 " href={"/pages/products"}>
         <MdArrowBack />
@@ -49,7 +49,7 @@ export default async function ProductPage({ params }) {
       </div>
 
       <h1 className="mt-8 text-xl font-semibold ">Reviews:</h1>
-      <div className="flex flex-wrap gap-5 justify-start mt-4">
+      <div className="flex  gap-5 justify-start mt-4 bg-[rgb(232, 226, 197]">
         {product.reviews?.map((review, index) => (
           <div
             key={index}
