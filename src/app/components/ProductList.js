@@ -75,7 +75,7 @@ export default function ProductList({ selectedCategory }) {
       <div className=" grid grid-cols-3 ">
         {products.map((product) => (
           <div
-            className="max-w-auto bg-card m-4 p-5 rounded-2xl flex flex-col justify-between"
+            className="max-w-auto border-4 border-card m-4 p-5 rounded-2xl flex flex-col justify-between"
             key={product.id}
           >
             <Link className="mb-3" href={`/pages/products/${product.id}`}>
@@ -101,12 +101,11 @@ export default function ProductList({ selectedCategory }) {
         ))}
       </div>
 
-      <section className="border-4 border-card p-5 m-4 rounded-2xl h-min ">
+      <section className="bg-card p-5 m-4 rounded-2xl h-min ">
         <div className="  rounded-2xl flex justify-between">
           <h1 className="font-bold	">Basket</h1>
-          <div className="rounded-full w-10 h-10 bg-red-500 flex align-center">
-            <h1>{productQuantity}</h1>
-          </div>
+
+          <h1>{productQuantity}</h1>
         </div>
         <ul>
           {basketProducts.map((basketProduct) => (
@@ -120,7 +119,7 @@ export default function ProductList({ selectedCategory }) {
             </div>
           ))}
         </ul>
-        <button className="bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
+        <button className="bg-accenthover hover:bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
           <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
         </button>
       </section>
