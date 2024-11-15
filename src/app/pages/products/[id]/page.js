@@ -10,11 +10,14 @@ export default async function ProductPage({ params }) {
   let product = await response.json();
 
   return (
-    <div className=" p-6">
+    <div className=" p-6 ">
       <Meny />
-      <Link className="flex gap-3 items-center mb-4 " href={"/pages/products"}>
+      <Link
+        className="flex justify-self-start gap-3 items-center mb-4 bg-accent rounded-2xl p-2 hover:bg-accenthover"
+        href={"/pages/products"}
+      >
         <MdArrowBack />
-        <p>Back</p>
+        <p className="mx-3">Back</p>
       </Link>
 
       <div className="grid grid-cols-2 place-items-center gap-8 bg-card border border-accent rounded-2xl">
@@ -42,7 +45,7 @@ export default async function ProductPage({ params }) {
         </div>
 
         <div className="space-y-4">
-          <h1 className="text-2xl font-semibold text-accent ">
+          <h1 className="text-2xl font-semibold text-accent-hover">
             {product.title}
           </h1>
           <p className="text-lg">Category: {product.category}</p>
