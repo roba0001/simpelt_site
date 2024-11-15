@@ -15,14 +15,6 @@
   }
 } */
 
-@font-face {
-  font-family: "MyLocalFont";
-  src: url("/fonts/my-local-font.woff2") format("woff2"),
-    url("/fonts/my-local-font.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   color: var(--foreground);
   background: var(--background);

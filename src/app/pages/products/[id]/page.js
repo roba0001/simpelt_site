@@ -49,7 +49,7 @@ export default async function ProductPage({ params }) {
       </div>
 
       <h1 className="mt-8 text-xl font-semibold ">Reviews:</h1>
-      <div className="flex  gap-5 justify-start mt-4 bg-[rgb(232, 226, 197]">
+      <div className="flex  gap-5 justify-start mt-4 --card">
         {product.reviews?.map((review, index) => (
           <div
             key={index}
