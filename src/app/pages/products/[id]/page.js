@@ -55,8 +55,7 @@ export default async function ProductPage({ params }) {
             className="w-full md:w-1/3 bg-white p-4 rounded-lg shadow-md border border-gray-200"
           >
             <h2 className="text-lg font-semibold">
-              {Array(review.rating).fill(/* billedet af en stjerne */).join("")}{" "}
-              - {review.comment}
+              {Array(review.rating).fill(/* billedet af en stjerne */).join("")} - {review.comment}
             </h2>
             <p>{review.reviewerEmail}</p>
             <p>{review.reviewerName}</p>
