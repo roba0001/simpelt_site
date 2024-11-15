@@ -5,17 +5,13 @@ import Link from "next/link";
 
 export default function PaymentPage() {
   const searchParams = useSearchParams();
+  //   hele strengen
   const items = searchParams.get("items");
-  const titles = searchParams.get("titles");
 
   const parseItems = (items) => {
     return items.split(",").map((item) => {
       const id = item;
       return { id: parseInt(id) };
-    });
-    return items.split("-").map((item) => {
-      const title = item;
-      return { title: parseInt(title) };
     });
   };
 
@@ -25,7 +21,7 @@ export default function PaymentPage() {
   //   const parsedItem = parsedItems.map((parsedItem) => ({ parsedItem }));
 
   //   console.log(Array.from(parsedItem));
-  console.log("parsedItems:", parsedItems);
+  console.log("items:", items);
 
   return (
     <div>
