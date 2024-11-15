@@ -6,19 +6,26 @@ import Link from "next/link";
 export default function PaymentPage() {
   const searchParams = useSearchParams();
   const items = searchParams.get("items");
+  const titles = searchParams.get("titles");
 
   const parseItems = (items) => {
     return items.split(",").map((item) => {
       const id = item;
       return { id: parseInt(id) };
     });
+    return items.split("-").map((item) => {
+      const title = item;
+      return { title: parseInt(title) };
+    });
   };
 
   const parsedItems = items ? parseItems(items) : [];
 
-  const parsedItem = parsedItems.map((parsedItem) => ({ parsedItem }));
+  //   har ingen betydning
+  //   const parsedItem = parsedItems.map((parsedItem) => ({ parsedItem }));
 
-  console.log(Array.from(parsedItem));
+  //   console.log(Array.from(parsedItem));
+  console.log("parsedItems:", parsedItems);
 
   return (
     <div>

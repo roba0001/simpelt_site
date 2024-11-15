@@ -11,8 +11,10 @@ export default function ProductList({ selectedCategory }) {
   const [basketProducts, setBasketProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
-
+  const selectedProducts = basketProducts
+    .map((basketProduct) => `${basketProduct.id}-${basketProduct.title}`)
+    .join(",");
+  console.log("selectedProducts", selectedProducts);
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -77,19 +79,12 @@ export default function ProductList({ selectedCategory }) {
           <div key={product.id}>
             <Link href={`/pages/products/${product.id}`}>
               {" "}
-              <Image
-                src={product.thumbnail}
-                width={250}
-                height={250}
-                alt="Product thumbnail"
-              />
+              <Image src={product.thumbnail} width={250} height={250} alt="Product thumbnail" />
             </Link>
 
             <div className="flex justify-around  ">
               <div>
-                <Link href={`/pages/products/${product.id}`}>
-                  {product.title}
-                </Link>
+                <Link href={`/pages/products/${product.id}`}>{product.title}</Link>
                 <h1>Price: {product.price}</h1>
               </div>
               <button onClick={() => addToBasket(product)}>
@@ -107,9 +102,9 @@ export default function ProductList({ selectedCategory }) {
         </div>
         <ul>
           {basketProducts.map((basketProduct) => (
-            <div antal={basketProduct.id} className="flex justify-between">
+            <div key={basketProduct.id} className="flex justify-between">
               <li>
-                <div key={basketProduct.id}>{basketProduct.title}</div>
+                <div>{basketProduct.title}</div>
               </li>
               <button onClick={() => removeFromBasket(basketProduct)}>
                 <FaRegTrashCan />
@@ -118,7 +113,9 @@ export default function ProductList({ selectedCategory }) {
           ))}
         </ul>
         <button>
-          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
+          <Link basketProducts={basketProducts} href={`/pages/payment?items=${selectedProducts}`}>
+            Pay now!
+          </Link>
         </button>
       </section>
     </div>
