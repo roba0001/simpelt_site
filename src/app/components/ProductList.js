@@ -63,14 +63,7 @@ export default function ProductList({ selectedCategory }) {
       setBasketProducts(basketProducts.concat(addedProduct));
     }
 
-    // if (basketProducts.id)
-    // if (newTask.id === product && productQuantity === 1) {
-    // } else {
-    //   console.log("flere end 1");
-    // }
-
-    // console.log("basketproducts: ", basketProducts);
-    // console.log(product.id);
+    console.log(basketProducts);
   }
 
   function removeFromBasket(id) {
