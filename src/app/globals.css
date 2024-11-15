@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: rgb(232, 226, 197);
   --foreground: #171717;
 }
 
@@ -14,10 +14,18 @@
   }
 }
 
+@font-face {
+  font-family: "MyLocalFont";
+  src: url("/fonts/my-local-font.woff2") format("woff2"),
+    url("/fonts/my-local-font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "MyLocalFont", "Romanesco", "Sail", Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns:
     [full-start] 1fr [content] minmax(0, 1200px)
