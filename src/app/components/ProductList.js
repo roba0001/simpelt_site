@@ -57,7 +57,7 @@ export default function ProductList({ selectedCategory }) {
     if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
       // her skal den tilføje tal istedet for produktet igen
       addedProduct.quantity++;
-      console.log("addedProductQuantity: ", addedProduct.quantity);
+      console.log("addedProduct.Quantity: ", addedProduct.quantity);
 
       console.log("basket includes this product");
     }
