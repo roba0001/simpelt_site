@@ -53,6 +53,7 @@ export default function CategoryList() {
       <form>
         <label htmlFor="categories">Categories: </label>
         <select
+          className="bg-background"
           name="categories"
           id="categories"
           onChange={categoryChange}
