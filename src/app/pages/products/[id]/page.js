@@ -53,7 +53,7 @@ export default async function ProductPage({ params }) {
         {product.reviews?.map((review, index) => (
           <div
             key={index}
-            className="w-full md:w-1/3 bg-white p-4 rounded-lg shadow-md border border-gray-200"
+            className="w-full md:w-1/3 bg-card p-4 rounded-lg shadow-md border border-gray-200"
           >
             <h2 className=" flex text-lg font-semibold">
               {[...Array(review.rating)].map((_, index) => (
