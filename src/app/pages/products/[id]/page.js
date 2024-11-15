@@ -2,6 +2,7 @@ import Meny from "@/app/components/Meny";
 import Image from "next/image";
 import { MdArrowBack } from "react-icons/md";
 import Link from "next/link";
+import { IoStarOutline } from "react-icons/io5";
 
 export default async function ProductPage({ params }) {
   const id = (await params).id;
@@ -54,8 +55,10 @@ export default async function ProductPage({ params }) {
             key={index}
             className="w-full md:w-1/3 bg-white p-4 rounded-lg shadow-md border border-gray-200"
           >
-            <h2 className="text-lg font-semibold">
-              {Array(review.rating).fill(/* billedet af en stjerne */).join("")}{" "}
+            <h2 className=" flex text-lg font-semibold">
+              {[...Array(review.rating)].map((_, index) => (
+                <IoStarOutline key={index} />
+              ))}{" "}
               - {review.comment}
             </h2>
             <p>{review.reviewerEmail}</p>
