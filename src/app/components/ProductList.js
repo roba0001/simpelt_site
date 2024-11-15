@@ -51,7 +51,6 @@ export default function ProductList({ selectedCategory }) {
       id: product.id,
       quantity: 0,
     };
-    setBasketProducts(basketProducts.concat(product));
     setProductQuantity(productQuantity + 1);
 
     if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
@@ -60,6 +59,8 @@ export default function ProductList({ selectedCategory }) {
       console.log("addedProductQuantity: ", addedProduct.quantity);
 
       console.log("basket includes this product");
+    } else {
+      setBasketProducts(basketProducts.concat(addedProduct));
     }
 
     // if (basketProducts.id)
