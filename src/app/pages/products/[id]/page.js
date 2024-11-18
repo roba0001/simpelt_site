@@ -13,7 +13,7 @@ export default async function ProductPage({ params }) {
     <div>
       <Meny />
       <Link
-        className="flex flex-initial gap-3 items-center mb-4 bg-accent rounded-2xl p-2 hover:bg-accenthover"
+        className="flex  gap-3 items-center mb-4 bg-accent rounded-2xl p-2 hover:bg-accenthover"
         href={"/pages/products"}
       >
         <MdArrowBack />
@@ -52,11 +52,11 @@ export default async function ProductPage({ params }) {
       </div>
 
       <h1 className="mt-8 text-xl font-semibold ">Reviews:</h1>
-      <div className="flex flex-wrap gap-5 justify-start mt-4">
+      <div className="flex flex-wrap gap-5 justify-start mt-4 ">
         {product.reviews?.map((review, index) => (
           <div
             key={index}
-            className="w-full md:w-1/3 bg-card p-4 rounded-lg shadow-md border border-gray-200"
+            className="w-full md:w-[32%] bg-card p-4 rounded-lg shadow-md border border-bg-accent pb-0.5"
           >
             <h2 className=" flex text-lg font-semibold">
               {[...Array(review.rating)].map((_, index) => (
