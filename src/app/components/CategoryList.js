@@ -49,7 +49,7 @@ export default function CategoryList() {
   };
 
   return (
-    <div>
+    <div className="bg-card">
       <form>
         <label htmlFor="categories">Categories: </label>
         <select

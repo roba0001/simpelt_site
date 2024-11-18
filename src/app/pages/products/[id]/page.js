@@ -10,10 +10,10 @@ export default async function ProductPage({ params }) {
   let product = await response.json();
 
   return (
-    <div className="bg-[rgb(232, 226, 197] p-6">
+    <div className="bg-accent rounded-2xl p-2 hover:bg-accenthover">
       <Meny />
       <Link className="flex gap-3 items-center mb-4 " href={"/pages/products"}>
-        <MdArrowBack />
+        <cla MdArrowBack />
         <p>Back</p>
       </Link>
 
