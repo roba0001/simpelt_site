@@ -11,9 +11,7 @@ export default function ProductList({ selectedCategory }) {
   const [basketProducts, setBasketProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  const selectedProducts = basketProducts
-    .map((basketProduct) => `${basketProduct.id}`)
-    .join(",");
+  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -55,9 +53,7 @@ export default function ProductList({ selectedCategory }) {
     };
     setProductQuantity(productQuantity + 1);
 
-    if (
-      basketProducts.some((basketProduct) => basketProduct.id === product.id)
-    ) {
+    if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
       // her skal den tilføje tal istedet for produktet igen
       addedProduct.quantity++;
       console.log("addedProductQuantity: ", addedProduct.quantity);
@@ -84,12 +80,7 @@ export default function ProductList({ selectedCategory }) {
           >
             <Link className="mb-3" href={`/pages/products/${product.id}`}>
               {" "}
-              <Image
-                src={product.thumbnail}
-                width={200}
-                height={200}
-                alt="Product thumbnail"
-              />
+              <Image src={product.thumbnail} width={200} height={200} alt="Product thumbnail" />
             </Link>
 
             <div className="flex flex-col justify-end gap-7">
@@ -119,9 +110,13 @@ export default function ProductList({ selectedCategory }) {
         </div>
         <ul>
           {basketProducts.map((basketProduct) => (
-            <div antal={basketProduct.id} className="flex justify-between my-4">
+            <div
+              key={basketProduct.id}
+              antal={basketProduct.id}
+              className="flex justify-between my-4"
+            >
               <li>
-                <div key={basketProduct.id}>{basketProduct.title}</div>
+                <div>{basketProduct.title}</div>
               </li>
               <button onClick={() => removeFromBasket(basketProduct)}>
                 <FaRegTrashCan />
@@ -130,9 +125,7 @@ export default function ProductList({ selectedCategory }) {
           ))}
         </ul>
         <button className="bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
-          <Link href={`/pages/payment?items=${selectedProducts}`}>
-            Pay now!
-          </Link>
+          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
         </button>
       </section>
     </div>
