@@ -59,7 +59,7 @@ export default function CategoryList() {
           onChange={categoryChange}
           value={selectedCategory}
         >
-          <option value="">All products</option>
+          <option>All products</option>
           {categories.map((category) => (
             <option key={category.name} value={category.slug}>
               {category.name}

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import useStore from "@/app/store/basketProducts";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,10 +9,11 @@ import { FaRegTrashCan } from "react-icons/fa6";
 
 export default function ProductList({ selectedCategory }) {
   const [products, setProducts] = useState(undefined);
-  const [basketProducts, setBasketProducts] = useState([]);
+  const { basketProducts, setBasketProducts } = useStore();
+  // const [basketProducts, setBasketProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
+  // const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -42,29 +44,29 @@ export default function ProductList({ selectedCategory }) {
     return <div>Loading...</div>;
   }
 
-  function addToBasket(product) {
-    // tilføj antal prop
-    // hvis den findes, tilføj antal
-    const addedProduct = {
-      title: product.title,
-      price: product.price,
-      id: product.id,
-      quantity: 0,
-    };
-    setProductQuantity(productQuantity + 1);
+  // function addToBasket(product) {
+  //   // tilføj antal prop
+  //   // hvis den findes, tilføj antal
+  //   const addedProduct = {
+  //     title: product.title,
+  //     price: product.price,
+  //     id: product.id,
+  //     quantity: 0,
+  //   };
+  //   setProductQuantity(productQuantity + 1);
 
-    if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
-      // her skal den tilføje tal istedet for produktet igen
-      addedProduct.quantity++;
-      console.log("addedProductQuantity: ", addedProduct.quantity);
+  //   if (basketProducts.some((basketProduct) => basketProduct.id === product.id)) {
+  //     // her skal den tilføje tal istedet for produktet igen
+  //     addedProduct.quantity++;
+  //     console.log("addedProductQuantity: ", addedProduct.quantity);
 
-      console.log("basket includes this product");
-    } else {
-      setBasketProducts(basketProducts.concat(addedProduct));
-    }
+  //     console.log("basket includes this product");
+  //   } else {
+  //     setBasketProducts(basketProducts.concat(addedProduct));
+  //   }
 
-    console.log(basketProducts);
-  }
+  //   console.log(basketProducts);
+  // }
 
   function removeFromBasket(id) {
     setBasketProducts(basketProducts.filter((product) => product.id !== id));
@@ -92,10 +94,16 @@ export default function ProductList({ selectedCategory }) {
               </div>
               <button
                 className="bg-accent rounded-2xl p-2 hover:bg-accenthover"
-                onClick={() => addToBasket(product)}
+                onClick={() => setBasketProducts(product)}
               >
                 Add to basket
               </button>
+              {/* <button
+                className="bg-accent rounded-2xl p-2 hover:bg-accenthover"
+                onClick={() => addToBasket(product)}
+              >
+                Add to basket
+              </button> */}
             </div>
           </div>
         ))}
@@ -108,7 +116,7 @@ export default function ProductList({ selectedCategory }) {
             <h1>{productQuantity}</h1>
           </div>
         </div>
-        <ul>
+        <ul key={productQuantity}>
           {basketProducts.map((basketProduct) => (
             <div
               key={basketProduct.id}
@@ -125,7 +133,8 @@ export default function ProductList({ selectedCategory }) {
           ))}
         </ul>
         <button className="bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
-          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
+          {/* <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link> */}
+          Pay now!
         </button>
       </section>
     </div>
