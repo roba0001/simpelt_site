@@ -11,7 +11,7 @@ export default function ProductList({ selectedCategory }) {
   const [basketProducts, setBasketProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
+  // const selectedProducts = basketProducts.map((basketProduct) => `${basketProduct.id}`).join(",");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -125,7 +125,8 @@ export default function ProductList({ selectedCategory }) {
           ))}
         </ul>
         <button className="bg-accent rounded-2xl p-2 hover:bg-accenthover mt-10">
-          <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link>
+          {/* <Link href={`/pages/payment?items=${selectedProducts}`}>Pay now!</Link> */}
+          pay now!
         </button>
       </section>
     </div>
